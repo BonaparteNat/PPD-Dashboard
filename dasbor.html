@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>ONEPOS - Naikin Omset, Turunin Ribet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #2563ff;
+      --blue-dark: #1d4ed8;
+      --yellow: #ffe45e;
+      --lime: #d9ff4c;
+      --bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.14);
+      --focus-ring: 0 0 0 3px rgba(37,99,255,0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    .btn {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    .btn:focus-visible,
+    input:focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    /* LAYOUT */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .top-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 1.1rem;
+    }
+
+    
+
+        /* background biru full selebar layar */
+    .nav {
+      background: #2563ff;
+    }
+
+    /* tinggi navbar lebih besar */
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 24px;      /* atur tinggi total navbar */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* logo menempel kiri, tinggi mirip figma */
+    .nav-logo img {
+      height: 50px;            /* full tinggi seperti contohmu */
+      width: auto;
+      display: block;
+    }
+
+    /* tombol kanan tetap di dalam bar biru */
+    .nav-cta {
+      padding: 10px 26px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #2563ff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+    }
+
+
+
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 32px;
+      align-items: center;
+      padding-block: 40px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 16px;
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-input {
+      flex: 1 1 180px;
+      min-width: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    .hero-media {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin-inline: auto;
+      aspect-ratio: 3 / 4;
+    }
+
+
+    .speech {
+      position: absolute;
+      top: 4%;
+      right: 5%;
+      background: #000;
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 1.1rem;
+    }
+
+    .speech--middle {
+      top: auto;
+      bottom: 10%;
+      left: 10%;
+      right: auto;
+    }
+
+    /* HOW IT WORKS */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: #e5ecff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 0.97rem;
+    }
+
+    .feature-desc {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  
+    .section.how {
+      padding-block: 64px;
+    }
+
+    .how-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-inline: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    .how-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 16px;
+    }
+
+    .how-desc {
+      margin: 0 0 28px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #6b7280;
+      max-width: 420px;
+    }
+
+    .how-image {
+      margin-top: 12px;
+      max-width: 420px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+    }
+
+    .how-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* LIST KANAN */
+
+    .how-list {
+      display: grid;
+      gap: 28px;
+    }
+
+    .how-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .how-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      background: #2563ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.4rem;
+    }
+
+    .how-item-title {
+      margin: 0 0 4px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .how-item-text {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #6b7280;
+    }
+
+    @media (max-width: 880px) {
+      .how-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .how-list {
+        margin-top: 24px;
+      }
+    }
+
+    .how-image {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+    }
+
+    /* versi besar seperti di Figma */
+    .how-image--big {
+      max-width: 420px;
+      height: 190px;        /* atur tinggi card */
+      margin-top: 40px;     /* geser agak ke bawah */
+    }
+
+    /* bikin gambar nge‑fill ke kiri, seperti Figma */
+    .how-image--big img {
+      width: 150%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left center;
+      display: block;
+    }
+
+    .section.commitments {
+      padding-top: 0;          /* hampir nempel ke hero */
+      padding-bottom: 40px;
+    }
+
+    .commit-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* judul lebih besar dan jarak kecil */
+    #commit-title.commit-title,
+    .commit-title {
+      margin: 8px 0 12px;      /* kecilkan jarak atas & bawah */
+      font-size: 2.1rem;       /* perbesar judul */
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* grid lebih rapat */
+    .commit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 48px;        /* jarak horizontal */
+      row-gap: 20px;           /* jarak vertikal lebih kecil */
+      margin-bottom: 16px;     /* jarak ke teks bawah */
+    }
+
+    .commit-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .commit-number {
+      margin: 0;
+      font-size: 2.4rem;       /* angka besar tapi tidak terlalu makan ruang */
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .commit-label {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #6b7280;
+    }
+
+    /* teks penjelas & link lebih rapat */
+    .commit-desc {
+      margin: 0 0 6px;
+      font-size: 0.88rem;
+      color: #6b7280;
+    }
+
+    .commit-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.88rem;
+      color: #2563ff;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .commit-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .commit-grid {
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+        row-gap: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .commit-title {
+        font-size: 1.6rem;
+      }
+      .commit-number {
+        font-size: 2rem;
+      }
+    }
+
+
+    /* CTA STRIP */
+
+    .cta-strip {
+      margin-top: 40px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(90deg, #2563ff, #4f46e5);
+      color: #fff;
+      padding: 26px 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .cta-strip h2 {
+      margin: 0 0 4px;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-strip p {
+      margin: 0;
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--blue-dark);
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      justify-self: flex-start;
+    }
+
+    /* TESTIMONIALS */
+
+    .testimonials {
+      margin-top: 40px;
+    }
+
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .t-card {
+      background: #f9fafb;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+    }
+
+    .t-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .t-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .t-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--blue);
+      color: #dbeafe;
+      margin-top: 48px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 16px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 0.8rem;
+    }
+
+    .footer-links a {
+      opacity: 0.9;
+    }
+
+    .footer-meta {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    .social {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .social a {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #fff;
+    }
+
+    .btn-outlined {
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+      padding: 8px 16px;
+      background: transparent;
+      color: #fff;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 28px;
+      }
+      .hero-media {
+        order: -1;
+      }
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .cta-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .footer-inner {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: left;
+      }
+      .footer-meta {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="ONEPOS">
+        <!-- pakai file logo yang barusan kamu upload -->
+        <img src="logo-onepos.png" alt="ONEPOS">
+      </a>
+
+      <button class="nav-cta" type="button">
+        Coba sekarang!
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="section hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title" class="hero-title">
+          Naikin Omset, Turunin Ribet
+        </h1>
+        <p class="hero-sub">
+          Kelola stok dan penjualan F&amp;B kamu dalam satu layar, tanpa pusing hitung manual.
+        </p>
+
+        <form class="hero-form" aria-label="Form coba sekarang">
+          <label class="sr-only" for="email">Alamat email</label>
+          <input
+            id="email"
+            class="hero-input"
+            type="email"
+            name="email"
+            placeholder="Masukkan email Anda"
+            required
+          >
+          <button type="submit" class="btn-primary">
+            Coba Sekarang
+          </button>
+        </form>
+      </div>
+
+      <!-- grid gambar hero -->
+      <div class="hero-media">
+      <img src="hero-collage.png"
+          alt="Kolase makanan dan suasana kerja kafe yang ceria">
+      </div>
+
+    </section>
+
+    <section class="section commitments" aria-labelledby="commit-title">
+    <div class="commit-inner">
+      <h2 id="commit-title" class="commit-title">Commitments</h2>
+
+      <div class="commit-grid" aria-label="Statistik komitmen ONEPOS">
+        <article class="commit-item">
+          <p class="commit-number">245%</p>
+          <p class="commit-label">Penghasilan tambahan<br>untuk usaha kamu</p>
+        </article>
+
+        <article class="commit-item">
+          <p class="commit-number">130K+</p>
+          <p class="commit-label">Audiens tergapai</p>
+        </article>
+
+        <article class="commit-item">
+          <p class="commit-number">50+</p>
+          <p class="commit-label">UMKM</p>
+        </article>
+
+        <article class="commit-item">
+          <p class="commit-number">24+</p>
+          <p class="commit-label">Provinsi di Indonesia</p>
+        </article>
+      </div>
+
+      <p class="commit-desc">
+        Kami membantu UMKM mencatat transaksi, memantau kinerja, dan mengambil keputusan bisnis yang tepat.
+      </p>
+
+      <a href="#" class="commit-link">
+        Pelajari Lebih Lanjut
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+    <!-- CARA KERJA -->
+    <section class="section how" aria-labelledby="how-title">
+  <div class="how-grid">
+    <!-- KIRI: judul + deskripsi + gambar -->
+    <div>
+      <h2 id="how-title" class="how-title">Cara Kerja Kami</h2>
+      <p class="how-desc">
+        Kami percaya bahwa untuk membantu UMKM F&amp;B berkembang, kami harus memahami
+        kebutuhan operasional bisnis secara menyeluruh dan memberikan solusi yang tepat sasaran.
+      </p>
+
+      <div class="how-image">
+        <img src="how-ux.png"
+             alt="Ilustrasi perancangan sistem kasir digital di atas meja kerja">
+      </div>
+    </div>
+
+    <!-- KANAN: list poin -->
+    <div class="how-list" aria-label="Langkah kerja ONEPOS">
+      <article class="how-item">
+        <div class="how-icon">📊</div>
+        <div>
+          <h3 class="how-item-title">Pahami Kebutuhan Bisnismu</h3>
+          <p class="how-item-text">
+            Kami berdiskusi dengan Anda untuk memahami alur penjualan, menu, cabang,
+            serta tantangan operasional yang sedang berjalan.
+          </p>
+        </div>
+      </article>
+
+      <article class="how-item">
+        <div class="how-icon">💡</div>
+        <div>
+          <h3 class="how-item-title">Rekomendasi Solusi POS</h3>
+          <p class="how-item-text">
+            Kami menyiapkan rekomendasi paket sistem POS yang sesuai dengan jenis
+            bisnis Anda, termasuk fitur inventori, kasir, laporan penjualan, hingga integrasi pembayaran.
+          </p>
+        </div>
+      </article>
+
+      <article class="how-item">
+        <div class="how-icon">⚡</div>
+        <div>
+          <h3 class="how-item-title">Implementasi Cepat &amp; Mudah</h3>
+          <p class="how-item-text">
+            Kami membantu proses setup hingga POS siap digunakan, termasuk input menu,
+            pelatihan untuk kasir dan staff, serta pendampingan awal penggunaan.
+          </p>
+        </div>
+      </article>
+
+      <article class="how-item">
+        <div class="how-icon">📈</div>
+        <div>
+          <h3 class="how-item-title">Optimalkan Kinerja Bisnis</h3>
+          <p class="how-item-text">
+            Kami menyediakan laporan dan analitik penjualan yang mudah dipahami agar
+            Anda dapat mengambil keputusan yang lebih baik dan mengembangkan bisnis lebih cepat.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+  </section>
+
+      <!-- CTA STRIP -->
+      <section class="cta-strip" aria-label="Ajakan jadwalkan demo">
+        <div>
+          <h2>Ayo Naikkan Level Bisnis F&amp;B Kamu!</h2>
+          <p>Siap meningkatkan efisiensi dan penjualan bisnis kamu? Konsultasi dan demo bisa kamu jadwalkan gratis.</p>
+        </div>
+        <button class="btn-light">Jadwalkan Demo</button>
+      </section>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="section testimonials" aria-labelledby="testi-title">
+      <h2 id="testi-title" class="section-title">Apa Kata Orang?</h2>
+      <div class="card-row" role="list">
+        <article class="t-card" role="listitem">
+          <h3 class="t-name">Amelia Joseph</h3>
+          <p class="t-role">Owner Cafe Kopi Kangen</p>
+          <p class="t-text">
+            Sejak pakai ONEPOS, antrian di toko kami jauh lebih lancar dan staff tidak lagi repot hitung stok di akhir hari.
+          </p>
+        </article>
+
+        <article class="t-card" role="listitem">
+          <h3 class="t-name">Jacob Joshua</h3>
+          <p class="t-role">Manager Wing Lak</p>
+          <p class="t-text">
+            Sebelumnya laporan keuangan tercecer di catatan manual. Sekarang semua rapi dan bisa diakses kapan saja.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h2 class="sr-only">Navigasi footer</h2>
+        <div class="footer-links" aria-label="Tautan penting">
+          <a href="#">Work With Us</a>
+          <a href="#">Advertise With Us</a>
+          <a href="#">Support</a>
+          <a href="#">Business Advisors</a>
+          <a href="#">About Us</a>
+          <a href="#">Our Work</a>
+          <a href="#">Our Commitment</a>
+          <a href="#">Report &amp; Blog</a>
+        </div>
+        <div class="social" aria-label="Media sosial">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Twitter">X</a>
+          <a href="#" aria-label="Facebook">Fb</a>
+        </div>
+        <button class="btn-outlined">Contact Us</button>
+      </div>
+
+      <div class="footer-meta">
+        <p>© 2025 ONEPOS. All rights reserved.</p>
+        <p><a href="#" style="color:#eef2ff;">Terms of use</a> • <a href="#" style="color:#eef2ff;">Privacy policy</a></p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- util class untuk screen reader only -->
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</body>
+</html>
